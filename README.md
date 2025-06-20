@@ -7,24 +7,25 @@ This website will be my corner of the internet and filled with stories for peopl
 
 ## Main Framework
 
-    [Astro JS](https://www.astro.build)
+  [Astro JS](https://www.astro.build)
 
 ## Search
 
-    [Pagefind](https://pagefind.app/)
+  [Pagefind](https://pagefind.app/)
+
 ## Fonts
 
-    [Google Fonts](https://fonts.google.com/)
+  [Google Fonts](https://fonts.google.com/)
 
-    - Quicksand
-    - Rubik
-    - Sulphur Point
+        - Quicksand
+        - Rubik
+        - Sulphur Point
 
 ## Icons
 
-    [Google Fonts](https://fonts.google.com/)
-    [Simple Icons](https://simpleicons.org/)
-    [Feather Icons](https://feathericons.com/)
+   - [Google Fonts](https://fonts.google.com/)
+   - [Simple Icons](https://simpleicons.org/)
+   - [Feather Icons](https://feathericons.com/)
 
 ## Acknowlwedgements
 
