@@ -1,0 +1,76 @@
+footer {
+  margin-top: auto;
+  max-width: 100%;
+  background: var(--accent-clr-8);
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--main-clr-dark);
+  font-weight: 700;
+}
+
+footer a:hover {
+  color: var(--accent-clr-7);
+}
+
+.website-link {
+  max-width: 100%;
+  display: flex;
+}
+
+footer #website {
+  font-family: var(--font-src3);
+  font-size: clamp(1.125rem, 0.9946rem + 0.6522cqi, 1.5rem);
+  color: var(--accent-clr-2);
+  letter-spacing: 0.12rem;
+  padding-top: 3rem;
+  margin-inline: auto;
+}
+footer #website span {
+  color: var(--accent-clr-9);
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.col1,
+.col2,
+.col3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.copy {
+  width: 100%;
+  text-align: center;
+  color: var(--accent-clr-9);
+}
+
+.copyright {
+  padding-bottom: 0.8rem;
+  margin-inline: auto;
+}
+.copyright a {
+  padding-left: 0.3rem;
+  font-weight: normal;
+}
+
+.col2 a,
+.col3 a,
+.col1 .follow {
+  margin: 0;
+}
+
+.col1 ul {
+  margin: 0;
+  padding-bottom: 1rem;
+}

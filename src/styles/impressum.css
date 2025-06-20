@@ -1,0 +1,82 @@
+.impressum-content {
+  margin-inline: auto;
+  max-width: 65ch;
+  line-height: 1.5;
+  padding: 2rem 1rem;
+}
+.impressum-content .email {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.email p a {
+  text-decoration: none;
+  color: var(--accent-clr-9);
+}
+
+#title {
+  font-size: clamp(3rem, 2.1304rem + 4.3478vw, 5.5rem);
+  text-transform: uppercase;
+}
+
+.divider-1 {
+  width: 100%;
+  height: 1px;
+  background-color: var(--main-clr-dark);
+}
+.divider-2 {
+  margin-inline: auto;
+  width: 25%;
+  height: 1px;
+  background-color: var(--main-clr-dark);
+}
+
+.impressum-content h3 {
+  padding: 0.5rem 0;
+}
+
+.contact {
+  padding: 2rem 0;
+}
+
+.resources {
+  padding-top: 2rem;
+}
+.resources-link {
+  text-decoration: none;
+  color: var(--accent-clr-9);
+}
+
+h3,
+p {
+  margin: 0;
+}
+
+p {
+  padding-bottom: 2rem;
+}
+
+.press {
+  padding: 2rem 0;
+}
+
+.press-name {
+  font-weight: bold;
+}
+
+@media (prefers-color-scheme: light) {
+  .email p a {
+    color: var(--accent-clr-5);
+    font-weight: bolder;
+  }
+  .resources-link {
+    color: var(--accent-clr-5);
+    font-weight: bolder;
+  }
+  .divider-1,
+  .divider-2 {
+    background-color: var(--main-clr-light);
+    height: 2px;
+  }
+}

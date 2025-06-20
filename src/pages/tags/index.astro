@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import { formatBlogPosts } from "../../scripts/utils";
+import getTags from "../../scripts/getTags";
+import MainLayout from "../../layouts/MainLayout.astro";
+import "../../styles/tags.css";
+
+const allPosts = await getCollection("stories");
+const formattedPosts = formatBlogPosts(allPosts);
+const tags = getTags(formattedPosts);
+---
+
+<MainLayout>
+  <div class="tags-list">
+    <section class="tags grid">
+      {
+        tags.map((tag) => (
+          <a class="tag flex" href={`/tags/${tag}/1`}>
+            <p>{tag}</p>
+          </a>
+        ))
+      }
+    </section>
+  </div>
+</MainLayout>

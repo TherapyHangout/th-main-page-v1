@@ -1,0 +1,70 @@
+.social-follow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap3);
+  width: fit-content;
+}
+
+.social-follow .follow {
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  gap: var(--gap2);
+  font-size: 1.5rem;
+  color: var(--main-clr-dark);
+}
+
+.social-follow .soc-links {
+  display: flex;
+  gap: var(--gap3);
+  justify-content: space-between;
+  list-style: none;
+}
+
+.social-follow .soc-links li {
+  position: relative;
+}
+
+.social-follow .soc-links a svg {
+  --icon-size: clamp(1.5625rem, 1.4538rem + 0.5435cqi, 1.875rem);
+
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  fill: var(--main-clr-dark);
+}
+
+.social-follow .tooltip {
+  position: absolute;
+  font-family: var(--font-src2);
+  padding-top: 0.3rem;
+  font-size: 0.8rem;
+  opacity: 0;
+  left: 50%;
+  transform: translate(-50%) translateY(0.5em);
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
+  color: var(--accent-clr-9);
+}
+
+.social-follow .soc-links li:has(:hover) .tooltip {
+  opacity: 1;
+  transform: translate(-50%) translateY(0);
+}
+
+@media (prefers-color-scheme: light) {
+  .contact-content .social-follow .tooltip {
+    color: var(--accent-clr-5);
+    font-weight: bolder;
+  }
+  .contact-content .social-follow .follow {
+    color: var(--main-clr-light);
+  }
+  .contact-content .social-follow .follow svg {
+    fill: var(--main-clr-light);
+  }
+  .contact-content .social-follow .soc-links a svg {
+    fill: var(--main-clr-light);
+  }
+}

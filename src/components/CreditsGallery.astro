@@ -1,0 +1,19 @@
+---
+import CredImgContainer from "./CredImgContainer.astro";
+import { getCollection } from "astro:content";
+import { formatBlogPosts } from "../scripts/utils";
+import "../styles/creditsGallery.css";
+
+const allPosts = await getCollection("stories");
+const formattedBlogPosts = formatBlogPosts(allPosts);
+// console.log(formattedBlogPosts[0]);
+---
+
+<section class="image-cards">
+  {
+    formattedBlogPosts.map((post) => {
+      const { image } = post.data;
+      return <CredImgContainer image={image} />;
+    })
+  }
+</section>

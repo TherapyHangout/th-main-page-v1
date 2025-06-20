@@ -1,0 +1,130 @@
+---
+import "../styles/paginationBar.css";
+
+const { pageNr, totalPosts, pageSize, paginationRoute, fallbackRoute } =
+  Astro.props;
+const currentPage = pageNr;
+const currPaginationRoute = paginationRoute;
+const totalPages = Math.ceil(totalPosts / pageSize);
+const totalPageNr = totalPages;
+const prevPageUrl =
+  currentPage === "2"
+    ? fallbackRoute
+    : `${currPaginationRoute}/${parseInt(currentPage, 10) - 1}`;
+const nextPageUrl = `${currPaginationRoute}/${parseInt(currentPage, 10) + 1}`;
+const nextDisabled = parseInt(currentPage, 10) === totalPages;
+const prevDisabled = parseInt(currentPage, 10) === 1;
+---
+
+<nav aria-label="pagination">
+  <div class="pagination-bar flex">
+    {
+      prevDisabled && (
+        <span class="prev-disabled flex">
+          <span class="dead-page-link first">First</span>
+          <span class="dead-page-link flex link-text">
+            <svg
+              class="chevron-left"
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 0 24 24"
+              width="24px"
+              fill="#eee"
+            >
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z" />
+            </svg>
+            <span class="prev-page-span">Prev Page</span>{" "}
+          </span>
+        </span>
+      )
+    }
+    {
+      !prevDisabled && (
+        <>
+          <a
+            class="page-link first"
+            aria-label="Navigate to first page"
+            href={fallbackRoute}
+          >
+            First
+          </a>
+          <a href={prevPageUrl} aria-label="previous page" class="page-link">
+            <span class="link-text flex">
+              <svg
+                class="chevron-left"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 0 24 24"
+                width="24px"
+                fill="#eee"
+              >
+                <path d="M0 0h24v24H0V0z" fill="none" />
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z" />
+              </svg>
+              {/* <ChevronLeft className='chevron-left' /> */}
+              <span class="prev-page-span">Prev Page</span>
+            </span>
+          </a>
+        </>
+      )
+    }
+
+    <div class="page-number">
+      <span><span class="page-text">Page</span> {currentPage} </span>/ <span
+        >{totalPageNr}</span
+      >
+    </div>
+
+    {
+      nextDisabled && (
+        <span class="next-disabled flex">
+          <span class="dead-page-link flex">
+            <span class="next-page-span">Next Page </span>
+            <svg
+              class="chevron-right"
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 0 24 24"
+              width="24px"
+              fill="#eee"
+            >
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" />
+            </svg>
+          </span>
+          <span class="dead-page-link last">Last</span>
+        </span>
+      )
+    }
+    {
+      !nextDisabled && (
+        <>
+          <a class="page-link" href={nextPageUrl} aria-label="next page">
+            <span class="link-text flex">
+              <span class="next-page-span">Next Page </span>
+              <svg
+                class="chevron-right"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 0 24 24"
+                width="24px"
+                fill="#eee"
+              >
+                <path d="M0 0h24v24H0V0z" fill="none" />
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" />
+              </svg>
+            </span>
+          </a>
+          <a
+            class="page-link last"
+            aria-label="Navigate to last page"
+            href={`${currPaginationRoute}/${totalPageNr}`}
+          >
+            Last
+          </a>
+        </>
+      )
+    }
+  </div>
+</nav>

@@ -1,0 +1,33 @@
+---
+import SocialFollow from "../components/SocialFollow.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/contact.css";
+---
+
+<MainLayout>
+  <div class="content-section">
+    <div class="contact-content">
+      <h1>Contact</h1>
+      <p>
+        The easisest way to contact us is via email. You can use one of the
+        email adresses below, or you can follow us on social media. We are
+        mostly active on Bluesky, but the important stuff is postet on the other
+        accounts as well.
+      </p>
+
+      <SocialFollow />
+      <address class="email-links">
+        <h2>Email adresses:</h2>
+        <p>
+          <a href="mailto: contact@therapyhangout.com"
+            >contact@therapyhangout.com</a
+          >
+        </p>
+        <p>
+          <a href="mailto: press@therapyhangout.com">press@therapyhangout.com</a
+          >
+        </p>
+      </address>
+    </div>
+  </div>
+</MainLayout>

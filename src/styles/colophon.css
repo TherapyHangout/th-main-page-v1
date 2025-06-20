@@ -1,0 +1,70 @@
+.colo-content {
+  margin-inline: auto;
+  max-width: 65ch;
+
+  padding: 2rem 1rem;
+}
+.colo-content h1 {
+  /* font-size: 3rem; */
+  font-size: clamp(3rem, 2.1304rem + 4.3478vw, 5.5rem);
+  text-transform: uppercase;
+}
+
+.colo-content h2 {
+  font-size: clamp(1.5rem, 1.4348rem + 0.3261vw, 1.6875rem);
+  padding: 1.5rem 0;
+  text-transform: uppercase;
+}
+
+.colo-content ul {
+  padding-left: 2rem;
+}
+
+.quicksand {
+  font-family: var(--font-src1);
+}
+.rubik {
+  font-family: var(--font-src2);
+}
+.sulphur {
+  font-family: var(--font-src3);
+}
+
+.colo-content p > a,
+.colo-content li > a {
+  display: flex;
+  align-items: center;
+  gap: var(--gap2);
+  color: var(--accent-clr-9);
+  max-width: fit-content;
+}
+.colo-content p > a:hover,
+.colo-content li > a:hover {
+  color: var(--accent-clr-7);
+}
+.colo-content p > a > svg,
+.colo-content li > a > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.colo-content p,
+.colo-content ul {
+  padding-bottom: 1.5rem;
+}
+
+.colo-content .ack-list > li {
+  padding-bottom: 1rem;
+}
+
+.links-list > p {
+  padding-left: 1rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .colo-content p > a,
+  .colo-content li > a {
+    color: var(--accent-clr-5);
+    font-weight: bolder;
+  }
+}

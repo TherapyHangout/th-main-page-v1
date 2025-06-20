@@ -1,0 +1,111 @@
+.card-md {
+  position: relative;
+  border-radius: var(--bo-rad1);
+  color: var(--main-clr-dark);
+  z-index: 1;
+  background-image: var(--main-bgr-dark3);
+}
+
+.card-md::before {
+  position: absolute;
+  content: "";
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  top: -5px;
+  left: -5px;
+  background-image: var(--border-a);
+  border-radius: var(--bo-rad1);
+  z-index: -1;
+}
+
+.card-md .card-md-title {
+  position: relative;
+  color: var(--main-clr-dark);
+}
+
+.card-md .article-thumb-md {
+  width: 100%;
+  height: 16rem;
+  object-fit: cover;
+  border-radius: var(--bo-rad1) var(--bo-rad1) 0 0;
+}
+
+.card-md-title .title {
+  position: absolute;
+  padding: 10px 20px;
+  color: var(--main-clr-dark);
+  background: transparent;
+  border-radius: var(--bo-rad1) 0 0 var(--bo-rad1);
+  bottom: 1.5rem;
+  right: 0rem;
+  text-align: right;
+  z-index: 3;
+}
+
+.card-md-title > a {
+  display: block;
+}
+
+.card-md-title .title::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--border-clr-3);
+  border-radius: var(--bo-rad1) 0 0 var(--bo-rad1);
+  z-index: -1;
+}
+.card-md .card-md-title .title:hover.title::before {
+  background: var(--accent-clr-8);
+}
+
+.card-md .article-desc {
+  border-radius: 0 0 var(--bo-rad1) var(--bo-rad1);
+  background-image: var(--main-bgr-dark3);
+  height: calc(100% - 16rem);
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: space-between;
+  line-height: 1.7;
+}
+.card-md .article-desc .synopsis {
+  padding: 2rem 1.5rem;
+}
+
+.card-md .article-desc .more-link {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  padding: 0.875rem 0.3rem;
+  border-radius: var(--bo-rad1);
+  font-size: 1.125rem;
+}
+
+.card-md .article-desc .more-link span {
+  padding: 0.875rem 0.3rem;
+}
+
+.card-md .article-desc .more-link:hover {
+  color: var(--accent-clr-2);
+  background: var(--accent-clr-8);
+}
+
+.card-md .article-meta {
+  text-align: right;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.card-md .article-meta p {
+  padding: 1rem 1.5rem;
+  margin: 0;
+}
+
+.card-md a {
+  text-decoration: none;
+  color: var(--main-clr-dark);
+}

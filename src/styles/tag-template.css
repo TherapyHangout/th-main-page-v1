@@ -1,0 +1,26 @@
+.site-head {
+  max-width: 95ch;
+
+  height: auto;
+  margin: auto;
+}
+
+.site-head .head-info {
+  font-family: var(--font-src2);
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.08rem;
+}
+
+.site-head .tag-title {
+  font-size: 2.5rem;
+  padding-left: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+@media screen and (min-width: 32rem) {
+  .site-head .tag-title {
+    font-size: 4rem;
+    padding-left: 3rem;
+  }
+}

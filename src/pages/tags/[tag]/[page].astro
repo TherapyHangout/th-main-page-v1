@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import getTags from "../../../scripts/getTags";
+import { formatBlogPosts } from "../../../scripts/utils";
+import MainLayout from "../../../layouts/MainLayout.astro";
+import Searchbar from "../../../components/Searchbar.astro";
+import BlogPostList from "../../../components/BlogPostList.astro";
+import Paginationbar from "../../../components/Paginationbar.astro";
+import "../../../styles/tag-template.css";
+
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await getCollection("stories");
+  const formattedPosts = formatBlogPosts(allPosts);
+  const allTags = getTags(formattedPosts);
+  return allTags.flatMap((tag) => {
+    const filteredPosts = formattedPosts.filter((post) =>
+      post.data.tags.includes(tag),
+    );
+    return paginate(filteredPosts, {
+      params: { tag },
+      pageSize: 2,
+    });
+  });
+}
+
+const { page } = Astro.props;
+const params = Astro.params;
+// console.log(params);
+
+const paginationRoute = `/tags/${params.tag}`;
+const fallBackRoute = `/tags/${params.tag}/1`;
+---
+
+<MainLayout>
+  <div class="site-head">
+    <p class="head-info uppercase">articles tagged</p>
+    <p class="tag-title">{params.tag}</p>
+  </div>
+  <Searchbar />
+  <div class="list-wrapper">
+    <section aria-labelledby="article-list" class="article-list grid">
+      {
+        page.data.map((blogPost) => {
+          return <BlogPostList blogPost={blogPost} />;
+        })
+      }
+    </section>
+  </div>
+  <div class="pagination-container">
+    <Paginationbar
+      paginationRoute={paginationRoute}
+      fallbackRoute={fallBackRoute}
+      pageNr={page.currentPage}
+      totalPosts={page.total}
+      pageSize={page.size}
+    />
+  </div>
+</MainLayout>

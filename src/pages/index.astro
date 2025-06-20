@@ -1,0 +1,33 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { formatBlogPosts } from "../scripts/utils";
+import { getCollection } from "astro:content";
+import ArticleCardXL from "../components/ArticleCardXL.astro";
+import FrontPageBlogList from "../components/FrontPageBlogList.astro";
+import Sidescroller from "../components/Sidescroller.astro";
+const allPosts = await getCollection("stories");
+const frontBlogPosts = formatBlogPosts(allPosts, { limit: 10 });
+const mixedPosts = formatBlogPosts(allPosts, { sortByDate: false, limit: 5 });
+---
+
+<MainLayout>
+  <h1 class="freshly">My Latest One</h1>
+  <section aria-labelledby="latest-article">
+    <ArticleCardXL latestPost={frontBlogPosts[0]} />
+  </section>
+  <div class="list-wrapper">
+    <h2 class="freshly2">some recent stories</h2>
+    <section
+      aria-labelledby="frontpage-blog-post-list"
+      class="article-list grid"
+    >
+      <FrontPageBlogList frontBlogPosts={frontBlogPosts} />
+    </section>
+  </div>
+  <a class="archive-link uppercase" href="/stories/2">
+    More Stories in the Archive...
+  </a>
+  <section aria-labelledby="random-article-mix">
+    <Sidescroller mixedPosts={mixedPosts} />
+  </section>
+</MainLayout>

@@ -1,0 +1,22 @@
+.container {
+  display: grid;
+  place-items: center;
+  gap: var(--gap3);
+}
+.container h1 {
+  text-align: center;
+}
+
+.container a {
+  text-decoration: none;
+  border: 2px solid var(--accent-clr-9);
+  border-radius: var(--bo-rad2);
+  padding: 0.5rem 1.5rem;
+  color: var(--accent-clr-9);
+  background-color: var(--accent-clr-3);
+}
+
+.container a:hover {
+  border: 2px solid var(--accent-clr-2);
+  color: var(--accent-clr-2);
+}

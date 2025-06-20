@@ -1,0 +1,43 @@
+.social-shares {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap3);
+  width: fit-content;
+}
+.social-shares .soc-links {
+  display: flex;
+  gap: var(--gap3);
+  list-style: none;
+}
+
+.social-shares .soc-links li {
+  position: relative;
+}
+
+.social-shares .soc-links a svg {
+  --icon-size: clamp(1.5625rem, 1.4538rem + 0.5435cqi, 1.875rem);
+
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  fill: var(--main-clr-dark);
+}
+
+.social-shares .tooltip {
+  position: absolute;
+  font-family: var(--font-src2);
+  padding-top: 0.3rem;
+  font-size: 0.8rem;
+  opacity: 0;
+  left: 50%;
+  transform: translate(-50%) translateY(0.5em);
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
+  color: var(--accent-clr-9);
+}
+
+.social-shares .soc-links li:has(:hover) .tooltip {
+  opacity: 1;
+  transform: translate(-50%) translateY(0);
+}

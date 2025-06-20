@@ -1,0 +1,60 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+import { Picture } from "astro:assets";
+import "../styles/mixup.css";
+
+const { mixedPosts } = Astro.props;
+---
+
+<section class="mixup">
+  <div class="section-head">
+    <h2 class="title">
+      <span>Random</span>
+      <span>Mix</span>
+    </h2>
+  </div>
+  <div class="pop-cards">
+    {
+      mixedPosts.map((post) => {
+        const { slug, title, date, author, image, tags } = post.data;
+        return (
+          <div class="card-sm flex">
+            <div class="card-title-img">
+              <a href={`/stories/${slug}`}>
+                <Picture
+                  class="article-thumb-sm"
+                  src={image.src}
+                  alt={image.alt}
+                  width={500}
+                  height={366}
+                  sizes="250px"
+                  format="avif"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+            <div class="card-info flex">
+              <a href={`/stories/${slug}`} class="article-link uppercase">
+                <h3>{title}</h3>
+              </a>
+              <div class="keyword-links flex">
+                {tags.map((tag) => {
+                  return (
+                    <a class="keyword-link uppercase" href={`/tags/${tag}/1`}>
+                      {tag}
+                    </a>
+                  );
+                })}
+              </div>
+              <div class="meta">
+                <p>
+                  by <span>{author}</span> on <FormattedDate date={date} />
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>

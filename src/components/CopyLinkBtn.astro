@@ -1,0 +1,18 @@
+---
+import Copy from "../assets/svgs/copy.svg";
+const { slug } = Astro.props;
+import "../styles/copyBtn.css";
+---
+
+<div class="share-link-wrapper" data-pagefind-ignore>
+  <a href={`/stories/${slug}`} target="_blank" id="share-link" tabindex="-1 "
+  ></a>
+  <button id="copy-btn" aria-label="copy story link" tabindex="0"
+    >Copy Link <Copy />
+  </button>
+  <span tabindex="0" class="show-success">Copied</span>
+  <span tabindex="0" class="show-failed">Failed</span>
+</div>
+<script>
+  import "/src/scripts/copyButtonLogic.js";
+</script>

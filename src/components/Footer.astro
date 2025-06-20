@@ -1,0 +1,41 @@
+---
+import SocialFollow from "./SocialFollow.astro";
+import "../styles/footer.css";
+---
+
+<footer>
+  <div class="website-link">
+    <a href="/" id="website">
+      <span>www.therapy</span>hangout.com
+    </a>
+  </div>
+  <div class="cols">
+    <div class="col1">
+      <SocialFollow />
+    </div>
+    <div class="col2">
+      <a href="/your-data">Your Data</a>
+      <a href="/contact">Contact</a>
+      <a href="/impressum">Impressum</a>
+    </div>
+    <div class="col3">
+      <a href="/about">About TH</a>
+      <a href="/th-news">TH News</a>
+      <a href="/credits">Credits</a>
+    </div>
+  </div>
+  <div class="copy">
+    <p class="copyright">
+      &copy; <span class="copyright-year"></span>
+      <span>Therapy Hangout - All Rights Reserved</span>
+      <br />
+      <a href="/colophon">COLOPHON</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.querySelector(".copyright-year").textContent = new Date()
+    .getFullYear()
+    .toString();
+</script>

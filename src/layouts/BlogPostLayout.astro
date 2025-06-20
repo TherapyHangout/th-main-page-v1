@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+import FormattedDate from "../components/FormattedDate.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { formatBlogPosts } from "../scripts/utils";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SocialShares from "../components/SocialShares.astro";
+import Sidescroller from "../components/Sidescroller.astro";
+import CopyLinkBtn from "../components/CopyLinkBtn.astro";
+
+import "../styles/global.css";
+import "../styles/blogPostTemplate.css";
+
+type Props = CollectionEntry<"stories">["data"];
+const { title, date, slug, author, image, description, tags } = Astro.props;
+const allPosts = await getCollection("stories");
+const mixedPosts = formatBlogPosts(allPosts, { sortByDate: false, limit: 5 });
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Header />
+    <div class="content">
+      <main data-pagefind-body class="main-content-container" id="main-content">
+        <div class="content-section">
+          <article>
+            <div class="head-section">
+              <!-- <p>Berlin, <FormattedDate date={date} /></p> -->
+              <h1 class="headline uppercase">{title}</h1>
+              <p class="synopsis text">{description}</p>
+            </div>
+            <div class="credits-wrapper" data-pagefind-ignore>
+              <a href={"/credits"} class="image-credits">
+                <div class="img-container">
+                  <Image
+                    class="article-main-img flex"
+                    src={image.src}
+                    alt={image.alt}
+                    width={700}
+                    height={394}
+                    loading="eager"
+                    format="avif"
+                  />
+                  <!-- sizes="(min-width: 640px) 500px, calc(77.19vw + 21px)" -->
+                </div>
+              </a>
+              <a href="/credits" class="credits-link">Credits</a>
+            </div>
+            <div class="article-meta text">
+              <!-- <div class="divider"></div> -->
+              <p class="author">
+                a story by <span>{author}</span>
+              </p>
+              <p class="pub-date">
+                published: <span><FormattedDate date={date} /></span>
+              </p>
+              <SocialShares />
+            </div>
+            <CopyLinkBtn slug={slug} />
+            <p class="main-story text">
+              <slot />
+            </p>
+            <nav class="tags">
+              Tags:{" "}
+              <ul class="tag-links">
+                {
+                  tags?.map((tag) => {
+                    return (
+                      <li>
+                        <a class="uppercase" href={`/tags/${tag}/1`}>
+                          {tag}
+                        </a>
+                      </li>
+                    );
+                  })
+                }
+              </ul>
+            </nav>
+          </article>
+          <section
+            data-pagefind-ignore
+            aria-labelledby="random-article-mix"
+            class="more-content"
+          >
+            <Sidescroller mixedPosts={mixedPosts} />
+          </section>
+        </div>
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>

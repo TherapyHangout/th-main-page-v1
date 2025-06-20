@@ -1,0 +1,48 @@
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap6);
+  align-items: center;
+  max-width: 65ch;
+  margin-inline: auto;
+  padding: 3rem 0;
+}
+
+.contact-content h1 {
+  font-size: clamp(3rem, 2.1304rem + 4.3478vw, 5.5rem);
+  text-transform: uppercase;
+  /* text-align: center; */
+}
+
+.contact-content > p {
+  padding: 0 1rem;
+  padding-bottom: 1rem;
+}
+
+.email-links {
+  display: flex;
+  padding-top: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-links > h3 {
+  padding: 1rem;
+}
+
+.email-links p a {
+  text-decoration: none;
+  color: var(--accent-clr-9);
+}
+
+.email-links p a:hover {
+  color: var(--accent-clr-7);
+}
+
+@media (prefers-color-scheme: light) {
+  .email-links p a {
+    color: var(--accent-clr-5);
+    font-weight: bolder;
+  }
+}

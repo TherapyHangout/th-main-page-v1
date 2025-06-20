@@ -1,0 +1,52 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+import "../styles/articleCardXL.css";
+import { Image } from "astro:assets";
+const { latestPost } = Astro.props;
+const tagsArray: (string | undefined)[] = latestPost.data.tags;
+---
+
+<div class="card-xl flex">
+  <div class="title">
+    <a class="article-link" href={`/stories/${latestPost.data.slug}`}>
+      <Image
+        class="article-thumb-xl"
+        src={latestPost.data.image.src}
+        alt={latestPost.data.title}
+        width={720}
+        height={480}
+        sizes="(min-width: 840px) 723px, (min-width: 440px) 86.84vw, calc(71.67vw + 74px)"
+        loading="eager"
+        format="avif"
+      />
+    </a>
+    <ul class="keyword-links flex">
+      {
+        tagsArray.map((keywords) => {
+          return (
+            <li>
+              <a
+                class="keyword-link uppercase"
+                tabindex="-1"
+                href={`/tags/${keywords}/1`}
+              >
+                {keywords}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+  <div class="article-desc flex">
+    <a href={`/stories/${latestPost.data.slug}`} class="article-link">
+      <h2>{latestPost.data.title}</h2>
+    </a>
+    <p class="synospsis">{latestPost.data.description}</p>
+    <p class="article-meta">
+      Story by <span>{latestPost.data.author}</span> on <FormattedDate
+        date={latestPost.data.date}
+      />
+    </p>
+  </div>
+</div>

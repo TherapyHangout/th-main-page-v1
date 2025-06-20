@@ -1,0 +1,59 @@
+.tags-list {
+  width: 95%;
+  margin: auto;
+}
+
+.tags {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--gap, 0.5rem);
+}
+
+.tag {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-decoration: none;
+  background-image: transparent;
+  color: var(--main-clr-dark);
+  border-radius: var(--bo-rad3) 0 0 var(--bo-rad3);
+  border: 2px solid transparent;
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+}
+
+.tag:hover {
+  color: var(--accent-clr-7);
+}
+
+.tag::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: var(--bo-rad3) 0 0 var(--bo-rad3);
+  z-index: -1;
+  pointer-events: none;
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+}
+
+.tag p {
+  padding: 5px 10px 5px 5px;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-family: var(--font-src2);
+  font-weight: 500;
+}
+
+.tag:focus-visible > p {
+  outline: 3px solid var(--accent-clr-9) !important;
+  offset: 0.5rem;
+}
+@supports not selector(:focus-visible) {
+  .tag:focus > p {
+    outline: 3px solid var(--accent-clr-9) !important;
+    offset: 0.5rem;
+  }
+}

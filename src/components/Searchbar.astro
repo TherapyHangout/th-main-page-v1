@@ -1,0 +1,121 @@
+---
+import ChevronDown from "../assets/svgs/chevron-down.svg";
+import SearchIcon from "../assets/svgs/search.svg";
+import CLoseIcon from "../assets/svgs/close.svg";
+import { getCollection } from "astro:content";
+import { formatBlogPosts } from "../scripts/utils";
+import getTags from "../scripts/getTags";
+import "../styles/searchbar.css";
+import "../styles/modalStyles.css";
+
+const allPosts = await getCollection("stories");
+const formattedPosts = formatBlogPosts(allPosts);
+const tags = getTags(formattedPosts);
+---
+
+<div class="searchbar">
+  <nav class="tags-menu">
+    <button
+      class="tags-btn"
+      aria-label="tags-menu"
+      aria-expanded="false"
+      role="combobox"
+      aria-controls="listbox"
+      aria-haspopup="listbox"
+      tabindex="0"
+    >
+      <span>Tags</span> <ChevronDown /></button
+    >
+    <ul role="listbox" class="tag-links" tabindex="-1">
+      {
+        tags.map((tag) => (
+          <li role="option" class="link-wrapper" aria-labelledby="tags-btn">
+            <a class="tag-link" href={`/tags/${tag}/1`}>
+              <p>{tag}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <button
+    class="search-btn"
+    id="open-dialog"
+    aria-label="open search button"
+    aria-haspopup="dialog"
+    aria-controls="dialog"
+    aria-expanded="false"
+  >
+    <SearchIcon />
+    <span>Search</span>
+  </button>
+  <!-- The Search Modal -->
+  <dialog id="dialog">
+    <div class="modal-content">
+      <div id="search"><p>Search a Story</p></div>
+      <div class="close-container">
+        <button id="close-dialog" aria-label="close search"
+          ><CLoseIcon /></button
+        >
+      </div>
+    </div>
+  </dialog>
+</div>
+
+<script>
+  import "/src/scripts/tagsFilterBtn.js";
+  import "/src/scripts/modal.ts";
+</script>
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+<script src="/pagefind/pagefind-ui.js" is:inline></script>
+
+<script>
+  window.addEventListener("DOMContentLoaded", (event) => {
+    //@ts-ignore
+    new PagefindUI({ element: "#search", showSubResults: true });
+  });
+</script>
+
+<style is:global>
+  #search .pagefind-ui__results,
+  #search .pagefind-ui__result-link {
+    color: var(--main-clr-dark);
+  }
+
+  #search .pagefind-ui__button {
+    background-color: transparent;
+    color: var(--main-clr-dark);
+  }
+  #search .pagefind-ui__search-input,
+  #search .pagefind-ui__search-clear,
+  #search .pagefind-ui__message {
+    /* opacity: 1; */
+    background-color: transparent;
+    color: var(--main-clr-dark);
+  }
+  #search .pagefind-ui__form::before {
+    background-color: var(--main-clr-dark);
+    opacity: 0.7;
+  }
+
+  /* #search,
+  .pagefind-ui--reset {
+    width: 100vh !important;
+  }
+
+  .pagefind-ui__form,
+  .pagefind-ui__search-input {
+    width: 100vh !important;
+  } */
+
+  #search .pagefind-ui__search-input::placeholder {
+    opacity: 0.7;
+  }
+
+  #search .pagefind-ui__result-thumb {
+    display: none;
+  }
+
+  /* Responsive Modal Styles */
+</style>

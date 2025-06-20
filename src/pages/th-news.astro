@@ -1,0 +1,17 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Sidescroller from "../components/Sidescroller.astro";
+import { getCollection } from "astro:content";
+import { formatBlogPosts } from "../scripts/utils";
+import "../styles/news.css";
+
+const allPosts = await getCollection("stories");
+const mixedPosts = formatBlogPosts(allPosts, { sortByDate: false, limit: 5 });
+---
+
+<MainLayout>
+  <div class="content-section">
+    <h1>TH News</h1>
+    <Sidescroller mixedPosts={mixedPosts} />
+  </div>
+</MainLayout>

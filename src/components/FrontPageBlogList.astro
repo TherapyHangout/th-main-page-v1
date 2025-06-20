@@ -1,0 +1,49 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+import { Picture } from "astro:assets";
+import "../styles/blogPostList.css";
+const { frontBlogPosts } = Astro.props;
+const listBlogPosts = frontBlogPosts.slice(1, 10);
+---
+
+<>
+  {
+    listBlogPosts.map((post) => {
+      const { title, slug, date, author, image, description } = post.data;
+
+      return (
+        <div class="card-md">
+          <div class="card-md-title">
+            <a href={`/stories/${slug}`} class="article-card-md">
+              <Picture
+                class="article-thumb-md"
+                src={image.src}
+                alt={image.alt}
+                width={720}
+                height={480}
+                format="avif"
+                sizes="(min-width: 1720px) 332px, (min-width: 1380px) calc(15vw + 77px), (min-width: 900px) calc(33.26vw - 17px), (min-width: 840px) 65vw, (min-width: 620px) calc(66.5vw - 114px), 276px"
+                loading="eager"
+              />
+            </a>
+            <a tabindex="-1" href={`/stories/${slug}`}>
+              <h3 class="title uppercase">{title}</h3>
+            </a>
+          </div>
+          <div class="article-desc flex">
+            <p class="synopsis">{description}</p>
+            <a href={`/stories/${slug}`} class="more-link">
+              <span>Read The Story</span>
+            </a>
+            <div class="article-meta">
+              <p class="article-meta-data">
+                a Story by <span>{author}</span> <br />
+                on <FormattedDate date={date} />
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</>

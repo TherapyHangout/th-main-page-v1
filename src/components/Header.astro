@@ -1,0 +1,80 @@
+---
+const pathname = Astro.url.pathname;
+import MenuBars from "../assets/svgs/menu-bars.svg";
+import Close from "../assets/svgs/close.svg";
+import "../styles/header.css";
+---
+
+<header>
+  <a href="#main-content" class="skip-nav-link">Skip Nav</a>
+  <nav class="navbar" role="navigation">
+    <div class="nav-header">
+      <a href="/">
+        <img src="/logo-th.svg" alt="Therapy Hangout Logo" class="th-logo" />
+      </a>
+      <button
+        class="nav-btn"
+        id="nav-btn"
+        aria-label="submenu of navigation links"
+        aria-expanded="false"
+        aria-controls="nav-links"
+        aria-haspopup="true"
+      >
+        <MenuBars class="menu-bars" />
+        <Close class="close" />
+      </button>
+    </div>
+    <ul class="nav-links" id="nav-links" aria-labelledby="nav-btn" role="menu">
+      <li role="none">
+        <a
+          role="menuitem"
+          href="/"
+          class={`nav-link ${pathname === "/" ? "active" : ""}`}>Home</a
+        >
+      </li>
+      <li role="none">
+        <a
+          role="menuitem"
+          href="/about"
+          class={`nav-link ${pathname.includes("about") ? "active" : ""}`}
+          >About</a
+        >
+      </li>
+      <li role="none">
+        <a
+          role="menuitem"
+          href="/stories/1"
+          class={`nav-link ${pathname.includes("stories") ? "active" : ""}`}
+          >Stories</a
+        >
+      </li>
+      <li role="none">
+        <a
+          role="menuitem"
+          href="/tags"
+          class={`nav-link ${pathname.includes("tags") ? "active" : ""}`}
+          >Tags</a
+        >
+      </li>
+      <li role="none">
+        <a
+          role="menuitem"
+          href="/contact"
+          class={`nav-link ${pathname.includes("contact") ? "active" : ""}`}
+          >Contact</a
+        >
+      </li>
+      <li role="none">
+        <a
+          role="menuitem"
+          href="/rss.xml"
+          class={`nav-link ${pathname === "/rss.xml" ? "active" : ""}`}>RSS</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  import "/src/scripts/nav-sidebar.js";
+</script>

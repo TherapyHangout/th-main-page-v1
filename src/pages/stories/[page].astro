@@ -1,0 +1,53 @@
+---
+import type { GetStaticPaths } from "astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+import Searchbar from "../../components/Searchbar.astro";
+import BlogPostList from "../../components/BlogPostList.astro";
+import Paginationbar from "../../components/Paginationbar.astro";
+import { getCollection } from "astro:content";
+import { formatBlogPosts } from "../../scripts/utils";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allPosts = await getCollection("stories");
+  const formattedPosts = formatBlogPosts(allPosts);
+  return paginate(formattedPosts, {
+    pageSize: 2,
+  });
+}) satisfies GetStaticPaths;
+
+type PaginationResults = {
+  currentPage: number;
+  lastPage: number;
+  total: number;
+  size: number;
+  data: any[];
+  url: {
+    prev?: string;
+    next?: string;
+  };
+};
+
+const { page }: { page: PaginationResults } = Astro.props;
+---
+
+<MainLayout>
+  <div class="site-head">
+    <p class="head-info uppercase">Story Archive</p>
+    <p class="tag-title"><span>page</span> {page.currentPage}</p>
+  </div>
+  <Searchbar />
+  <div class="list-wrapper">
+    <section aria-labelledby="article-list" class="article-list grid">
+      {page.data.map((blogPost) => <BlogPostList blogPost={blogPost} />)}
+    </section>
+  </div>
+  <div class="pagination-container">
+    <Paginationbar
+      paginationRoute={"/stories"}
+      fallbackRoute={"/stories/1"}
+      pageNr={page.currentPage}
+      totalPosts={page.total}
+      pageSize={page.size}
+    />
+  </div>
+</MainLayout>

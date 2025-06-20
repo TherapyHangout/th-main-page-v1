@@ -1,0 +1,50 @@
+.cred-main {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: 0 0.5rem;
+}
+
+.cred-main h1 {
+  padding-top: 2rem;
+}
+
+.cred-main p {
+  padding: 0.5rem;
+}
+
+.cred-main a > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.colo-link {
+  margin-top: 4rem;
+  max-width: 65ch;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap3);
+  padding: 0 0.5rem;
+  padding-bottom: 2rem;
+}
+
+.colo-link > a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent-clr-9);
+}
+
+.colo-link a:hover {
+  color: var(--accent-clr-7);
+}
+
+@media (prefers-color-scheme: light) {
+  .colo-link > a {
+    color: var(--accent-clr-5);
+    font-weight: bolder;
+  }
+  .cred-main a {
+    color: var(--main-clr-light);
+  }
+}

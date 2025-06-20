@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import FormattedDate from "./FormattedDate.astro";
+import "../styles/blogPostList.css";
+const { blogPost } = Astro.props;
+const { title, slug, date, author, image, description } = blogPost.data;
+//console.log(id);
+---
+
+<div class="card-md">
+  <div class="card-md-title">
+    <a href={`/stories/${slug}`} class="article-card-md">
+      <Image
+        class="article-thumb-md"
+        src={image.src}
+        alt={image.alt}
+        width={720}
+        height={480}
+        format="avif"
+        decoding="async"
+        loading="eager"
+      />
+    </a>
+    <a href={`/stories/${slug}`}>
+      <h3 class="title uppercase">{title}</h3>
+    </a>
+  </div>
+  <div class="article-desc flex">
+    <p class="synopsis">{description}</p>
+    <a href={`/stories/${slug}`} class="more-link">
+      <span>Read The Story</span>
+    </a>
+    <div class="article-meta">
+      <p class="article-meta-data">
+        a Story by <span>{author}</span>
+        <br />
+        on <FormattedDate date={date} />
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.image-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--gap2a);
+  grid-auto-flow: dense;
+  margin: 0.75rem 0;
+  padding: 0 0.25rem;
+}

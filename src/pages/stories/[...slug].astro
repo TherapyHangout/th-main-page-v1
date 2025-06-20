@@ -1,0 +1,25 @@
+---
+import { getCollection, render } from "astro:content";
+import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
+import { formatBlogPosts } from "../../scripts/utils";
+// import MainLayout from "../../layouts/MainLayout.astro";
+import type { CollectionEntry } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const allPosts = await getCollection("stories");
+  const formattedPosts = formatBlogPosts(allPosts);
+  return formattedPosts.map((blogPost: CollectionEntry<"stories">) => {
+    return {
+      params: { slug: blogPost.data.slug },
+      props: blogPost,
+    };
+  });
+};
+type Props = CollectionEntry<"stories">;
+const blogPost = Astro.props;
+const { Content } = await render(blogPost);
+---
+
+<BlogPostLayout {...blogPost.data}>
+  <Content />
+</BlogPostLayout>

@@ -1,0 +1,28 @@
+---
+import CreditsGallery from "../components/CreditsGallery.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/creditsPage.css";
+---
+
+<MainLayout>
+  <div class="content-section">
+    <section aria-labelledby="image-credits" class="cred-main">
+      <h1 class="subheads">Images We Used</h1>
+      <p>
+        These are the images we used on this website and in our articles. If you
+        click on the name of the Photographer or the Image, you will see their
+        profile on the website we took the images from (like unsplash or
+        pexels). Please keep in mind, that these are external links, which leads
+        you to a website not affiliated with us.
+      </p>
+      <CreditsGallery />
+    </section>
+    <div class="colo-link">
+      <p>
+        If you are more interested in the technical stuff, follow the link
+        below:
+      </p>
+      <a href="/colophon">Colophon</a>
+    </div>
+  </div>
+</MainLayout>
