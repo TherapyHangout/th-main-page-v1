@@ -3,14 +3,17 @@
 This website was built by a total noob and like always in programming,
 the main point is, it somehow works. Nothing in this code screams "professional". There could be a lot of improvements and i'm sure a lot of you would code things differently.
 This website will be my corner of the internet and filled with stories for people who struggle with mental illness and everybody else who is interested. 
- 
+
 
 ## Main Framework
+
     [Astro JS](https://www.astro.build)
 
 ## Search
+
     [Pagefind](https://pagefind.app/)
 ## Fonts
+
     [Google Fonts](https://fonts.google.com/)
 
     - Quicksand
@@ -18,6 +21,7 @@ This website will be my corner of the internet and filled with stories for peopl
     - Sulphur Point
 
 ## Icons
+
     [Google Fonts](https://fonts.google.com/)
     [Simple Icons](https://simpleicons.org/)
     [Feather Icons](https://feathericons.com/)
