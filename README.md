@@ -2,6 +2,7 @@
 
 This website was built by a total noob and like always in programming,
 the main point is, it somehow works. Nothing in this code screams "professional". There could be a lot of improvements and i'm sure a lot of you would code things differently.
+
 This website will be my corner of the internet and filled with stories for people who struggle with mental illness and everybody else who is interested. 
 
 
@@ -17,9 +18,9 @@ This website will be my corner of the internet and filled with stories for peopl
 
   [Google Fonts](https://fonts.google.com/)
 
-        - Quicksand
-        - Rubik
-        - Sulphur Point
+   - Quicksand
+   - Rubik
+   - Sulphur Point
 
 ## Icons
 
