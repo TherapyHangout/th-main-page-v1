@@ -5,11 +5,16 @@ import mdx from "@astrojs/mdx";
 
 import sitemap from "@astrojs/sitemap";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://therapyhangout.com",
   integrations: [mdx(), sitemap()],
+
   image: {
     domains: ["raw.githubusercontent.com"],
   },
+
+  adapter: cloudflare(),
 });
